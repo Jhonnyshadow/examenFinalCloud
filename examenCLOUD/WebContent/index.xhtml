@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head></h:head> 
+<body> 
+<p:growl autoUpdate="true"></p:growl>
+    <p:panel header="MI TIENDITA" style="width:500px">
+        <h:form>
+            <p:panelGrid columns="2">
+                <p:commandButton value="Listar"
+                    action="#{controller.actionCargarProductos()}" update="@form"></p:commandButton>
+                
+            </p:panelGrid>
+            <p:dataTable emptyMessage="Lista aun sin cargar"
+                value="#{controller.listadoproductos}" var="c">
+                <p:column headerText="CODIGO">
+                    <h:outputText value="#{c.codigo}" />
+                </p:column>
+                <p:column headerText="Descripcion">
+                    <h:outputText value="#{c.descripcion}" />
+                </p:column>
+                <p:column headerText="PRECIO">
+                    <h:outputText value="#{c.precio}" />
+                </p:column>
+            </p:dataTable>
+            <p:messages autoUpdate="true"></p:messages>
+        </h:form>
+    </p:panel>
+</body> 
+</html>
